@@ -10,8 +10,6 @@ import authRouter from "./routes/auth.js";
 import postrouter from "./routes/post.js";
 dotenv.config();
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
 app.use(cors());

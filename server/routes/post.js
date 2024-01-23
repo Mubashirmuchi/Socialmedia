@@ -1,18 +1,35 @@
 import express from "express";
 const postrouter = express.Router();
+import bodyParser from "body-parser";
 import Post from "../models/post.js";
 import User from "../models/user.js";
+import cloudinary from "../utils/cloudinary.js";
+import upload from "../middleware/multer_middleware.js";
+
 // create a post
 
-postrouter.post("/", async (req, res) => {
-    const newPost = new Post(req.body);
+postrouter.post("/", upload.single("testimage"), (req, res) => {
+    const { originalname, path } = req.file;
+    const userId = req.body.username;
+    console.log("original path and name", originalname, path, userId);
     try {
-        const savedpost = await newPost.save();
-        res.status(200).json(savedpost);
+        cloudinary.uploader.upload(req.file.path, (err, result) => {
+            if (err) {
+                console.log(err);
+
+                return res.status(500).json({ success: false, message: "error" });
+            }
+            const url = result.url;
+            const newPost = new Post({ userId, url, originalname, path });
+
+            newPost.save().then(() => {});
+            res.status(200).json({ success: true, message: "uploaded", data: result });
+        });
     } catch (error) {
         res.status(500).json(error);
     }
 });
+
 // update a post
 
 postrouter.put("/:id", async (req, res) => {
