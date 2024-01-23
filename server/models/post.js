@@ -3,15 +3,23 @@ import { type } from "os";
 
 const postschema = new mongoose.Schema(
     {
+        originalname: {
+            type: String,
+            // required: true,
+        },
+        image: {
+            data: Buffer,
+            contentType: String,
+        },
         userId: {
             type: String,
-            required: true,
+            // required: true,
         },
         desc: {
             type: String,
             max: 500,
         },
-        img: {
+        url: {
             type: String,
         },
         likes: {

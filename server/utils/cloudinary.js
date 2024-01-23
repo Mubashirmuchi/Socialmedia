@@ -9,19 +9,4 @@ cloudinary.config({
     api_secret: process.env.API_SECRET,
 });
 
-cloudinary.uploader.upload(
-    "https://upload.wikimedia.org/wikipedia/commons/a/ae/Olympic_flag.jpg",
-    { public_id: "olympic_flag" },
-    function (error, result) {
-        console.log(result);
-    }
-);
-
-const uploadoncloud = async (localfilepath) => {
-    try {
-        if (!localfilepath) return null;
-        cloudinary.uploader.upload(localfilepath);
-    } catch (error) {}
-};
-
-module.exports = cloudinary;
+export default cloudinary;
