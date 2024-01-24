@@ -5,12 +5,10 @@ import jwt from "jsonwebtoken";
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-    res.send("this is auth router");
-});
-
 router.post("/register", async (req, res) => {
+    console.log(req.body);
     try {
+        console.log("-----qusermname", req.body.username);
         const isUserExist = await User.findOne({ email: req.body.email });
 
         if (isUserExist?._id) {
@@ -20,6 +18,7 @@ router.post("/register", async (req, res) => {
         const user = new User({
             username: req.body.username,
             email: req.body.email,
+            fullname: req.body.fullname,
             password: hashedPassword,
         });
         await user.save();

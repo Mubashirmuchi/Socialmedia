@@ -1,14 +1,14 @@
 import React from "react";
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
-import Signup from "./pages/Signup";
-import Login from "./pages/Loginpage/Login";
 import Privatelayout from "./Layout/Privatelayout";
 import Homepage from "./pages/Homepage";
 import Explore from "./pages/Loginpage/Explore";
 import Search from "./pages/Search";
 import Chat from "./pages/Chat";
 import Profilepage from "./pages/Profilepage";
-
+import Authlayout from "./Layout/authlayout";
+import Login from "./pages/Loginpage/Login";
+import Signup from "./pages/Signup/Signup";
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route>
@@ -20,8 +20,10 @@ const router = createBrowserRouter(
                 <Route path="profile" element={<Profilepage />} />
             </Route>
 
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="" element={<Authlayout />}>
+                <Route path="login" element={<Login />} />
+                <Route path="signup" element={<Signup />} />
+            </Route>
         </Route>
     )
 );

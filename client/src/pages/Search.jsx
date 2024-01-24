@@ -1,7 +1,7 @@
 import React from "react";
 
 const Search = () => {
-    return <div>search</div>;
+    return <div className="w-[92px] h-[86px]">gchj,k.</div>;
 };
 
 export default Search;
