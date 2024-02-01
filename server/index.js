@@ -5,12 +5,14 @@ import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import userRouter from "./routes/users.js";
 import authRouter from "./routes/auth.js";
 import postrouter from "./routes/post.js";
 dotenv.config();
 
 app.use(helmet());
+app.use(cookieParser());
 app.use(express.json());
 app.use(morgan("common"));
 app.use(cors());
