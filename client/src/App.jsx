@@ -1,26 +1,26 @@
-import React from "react";
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
-import Privatelayout from "./Layout/Privatelayout";
-import Homepage from "./pages/Homepage";
-import Explore from "./pages/Loginpage/Explore";
-import Search from "./pages/Search";
-import Chat from "./pages/Chat";
-import Profilepage from "./pages/Profilepage";
+import Userlayout from "./Layout/userlayout";
+import Homepage from "./pages/user/Homepage/Homepage";
+import Message from "./pages/user/message/Message";
+import Friends from "./pages/user/friends/Friends";
+import Explore from "./pages/user/explore/Explore";
+import Profile from "./pages/user/profile/Profile";
+import Login from "./pages/auth/login/Login";
+import Signup from "./pages/auth/signup/Signup";
 import Authlayout from "./Layout/authlayout";
-import Login from "./pages/Loginpage/Login";
-import Signup from "./pages/Signup/Signup";
+
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route>
-            <Route path="/" element={<Privatelayout />}>
+            <Route path="/" element={<Userlayout />}>
                 <Route path="" element={<Homepage />} />
-                <Route path="explore" element={<Explore />} />
-                <Route path="search" element={<Search />} />
-                <Route path="chat" element={<Chat />} />
-                <Route path="profile" element={<Profilepage />} />
+                <Route path="/message" element={<Message />} />
+                <Route path="/friends" element={<Friends />} />
+                <Route path="/explore" element={<Explore />} />
+                <Route path="/profile" element={<Profile />} />
             </Route>
 
-            <Route path="" element={<Authlayout />}>
+            <Route path="/" element={<Authlayout />}>
                 <Route path="login" element={<Login />} />
                 <Route path="signup" element={<Signup />} />
             </Route>
@@ -29,13 +29,7 @@ const router = createBrowserRouter(
 );
 
 function App() {
-    return (
-        <>
-            <React.StrictMode>
-                <RouterProvider router={router} />
-            </React.StrictMode>
-        </>
-    );
+    return <RouterProvider router={router}></RouterProvider>;
 }
 
 export default App;
