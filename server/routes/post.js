@@ -1,6 +1,5 @@
 import express from "express";
 const postrouter = express.Router();
-import bodyParser from "body-parser";
 import Post from "../models/post.js";
 import User from "../models/user.js";
 import cloudinary from "../utils/cloudinary.js";

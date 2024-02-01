@@ -2,15 +2,18 @@ import express from "express";
 import User from "../models/user.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
+dotenv.config();
 
 const router = express.Router();
-
-router.get("/", (req, res) => {
-    res.send("this is auth router");
-});
+router.use(express.json());
+router.use(cookieParser());
 
 router.post("/register", async (req, res) => {
+    console.log(req.body);
     try {
+        console.log("-----qusermname", req.body.username);
         const isUserExist = await User.findOne({ email: req.body.email });
 
         if (isUserExist?._id) {
@@ -20,6 +23,7 @@ router.post("/register", async (req, res) => {
         const user = new User({
             username: req.body.username,
             email: req.body.email,
+            fullname: req.body.fullname,
             password: hashedPassword,
         });
         await user.save();
@@ -41,12 +45,12 @@ router.post("/login", async (req, res) => {
         console.log("isPasswordCorrect", isPasswordCorrect);
         if (!isPasswordCorrect) return res.status(400).json("incorrect email or password");
 
-        console.log(user._id, "ispassword cotrreeer");
+        console.log(user._id, "ispassword correct");
 
         const token = jwt.sign({ id: user._id }, process.env.SECRETKEY, { expiresIn: "48h" });
-
-        res.cookie("token", token, { httpOnly: true });
-        res.status(200).json("Login Sucessfull!!");
+        user.password = undefined;
+        res.status(200).cookie("token", token, { httpOnly: true }).json({ success: true, token, user });
+        console.log(res.cookie, "cookieesss");
     } catch (error) {
         res.status(500).json(error);
     }
