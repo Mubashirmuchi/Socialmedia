@@ -8,13 +8,13 @@ import ShareTag from "../../../components/Sharetag/ShareTag";
 import Likebtn from "../../../components/button/Likebtn";
 import CommentInput from "../../../components/Input/CommentInput";
 
-const PostCard = ({ person }) => {
+const PostCard = ({ person, url }) => {
     return (
         <>
             <div className="bg-white shadow rounded-lg my-6 pb-4">
                 <CardHeader name={person} />
                 <div className="border-b border-gray-100 p-4"></div>
-                <Photo />
+                <Photo url={url} />
                 <Caption caption={person} />
                 <div className="flex justify-start mb-4 border-t border-gray-100">
                     <div className="flex w-full mt-1 pt-2 pl-5">

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import axios from "axios";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../../../store/UserSlice";
 
 const Login = () => {
     const [response, setResponse] = useState("");
@@ -8,19 +9,24 @@ const Login = () => {
         email: "",
         password: "",
     });
+
+    const { loading, error } = useSelector((state) => state.user);
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setData((prev) => ({ ...prev, [name]: value }));
     };
 
     const handleSubmit = () => {
-        axios
-            .post("http://localhost:8000/api/auth/login", data)
-            .then((res) => {
-                setResponse(res);
-                console.log(res);
-            })
-            .catch((err) => {});
+        dispatch(loginUser(data)).then((result) => {
+            if (result.payload) {
+                setData("");
+                navigate("/");
+            }
+        });
     };
     return (
         <div action="" className="sm:w-2/3 w-full px-4 lg:px-0 mx-auto">
@@ -52,12 +58,18 @@ const Login = () => {
                     onClick={handleSubmit}
                     className="uppercase block w-full p-4 text-lg rounded-full bg-indigo-500 hover:bg-indigo-600 focus:outline-none"
                 >
-                    Login
+                    {loading ? "loading..." : "Login"}
                 </button>
             </div>
+
+            {error && (
+                <div className="p-1  w-fit mx-4 my-3 text-sm text-red-700 bg-red-200 rounded-lg" role="alert">
+                    <span className="font-medium">Invalid credentials</span> {error.message}
+                </div>
+            )}
             <hr className="mt-10 h-full w-full opacity-50" />
             <div className="px-4 pb-2 pt-4">
-                <button className="flex justify-center items-center  w-full p-2 text-lg rounded-full hover:border focus:outline-none">
+                <button className="flex justify-center items-center  w-full p-2 text-lg focus:outline-none">
                     <svg
                         className="m-2"
                         xmlns="http://www.w3.org/2000/svg"

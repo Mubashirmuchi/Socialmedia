@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const Sidebar = ({ setOpen }) => {
+const Sidebar = ({ setOpen, setPost }) => {
     return (
         <>
             <div className="z-20 hidden w-80 overflow--auto pt-24 md:block flex-shrink-0">
@@ -83,6 +83,37 @@ const Sidebar = ({ setOpen }) => {
                             (15)
                         </span>
                     </Link>
+                </div>
+
+                <div className=" my-2 pl-7 p-2 flex">
+                    <button
+                        onClick={() => {
+                            console.log("cretepodt");
+                            setPost(true);
+                        }}
+                        className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6"
+                    >
+                        <span className="inline-flex justify-center items-center ml-4">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clipPath="url(#clip0_52_2)">
+                                    <path
+                                        d="M8 16C3.5815 16 0 12.4185 0 8C0 3.5815 3.5815 0 8 0C12.4185 0 16 3.5815 16 8C16 10.1217 15.1571 12.1566 13.6569 13.6569C12.1566 15.1571 10.1217 16 8 16ZM8 1C4.134 1 1 4.134 1 8C1 11.866 4.134 15 8 15C11.866 15 15 11.866 15 8C15 6.14348 14.2625 4.36301 12.9497 3.05025C11.637 1.7375 9.85652 1 8 1Z"
+                                        fill="currentColor"
+                                    />
+                                    <path
+                                        d="M11.5 7.5H8.5V4.5H7.5V7.5H4.5V8.5H7.5V11.5H8.5V8.5H11.5V7.5Z"
+                                        fill="currentColor"
+                                    />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_52_2">
+                                        <rect width="16" height="16" fill="currentColor" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </span>
+                        <span className="ml-2 text-sm tracking-wide truncate">Create Post</span>
+                    </button>
                 </div>
 
                 <div className=" my-2 pl-7 p-2 flex">
