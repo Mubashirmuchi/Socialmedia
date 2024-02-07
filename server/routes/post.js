@@ -5,6 +5,18 @@ import User from "../models/user.js";
 import cloudinary from "../utils/cloudinary.js";
 import upload from "../middleware/multer_middleware.js";
 
+// Get user post
+
+postrouter.get("/userpost/:userId", async (req, res) => {
+    const currentuser = await User.findById(req.params.userId);
+    const userpost = await Post.find({ userId: currentuser._id });
+    res.status(200).json(userpost);
+    try {
+    } catch (error) {
+        res.status(500).json(error);
+    }
+});
+
 // create a post
 
 postrouter.post("/", upload.single("testimage"), (req, res) => {

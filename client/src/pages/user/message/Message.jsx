@@ -7,9 +7,9 @@ const Message = () => {
         "
         >
             <h2 className="text-gray-600 text-xl font-semibold">Message</h2>
-            <div className="border-b border-gray-100 p-4"></div>
+            <div className="border-b-2 border-gray-100 p-4"></div>
 
-            <div className=" bg-gray-100 w-1/3 h-screen overflow-scroll">
+            <div className=" bg-gray-100 w-1/3 h-screen overflow-x-auto">
                 <CardHeader />
                 <CardHeader />
                 <CardHeader />

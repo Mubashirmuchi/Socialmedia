@@ -28,7 +28,7 @@ router.post("/register", async (req, res) => {
         });
         await user.save();
 
-        res.status(200).json("success");
+        res.status(200).json({ message: "Success" });
     } catch (error) {
         res.status(500).json({ message: error });
     }
@@ -43,13 +43,17 @@ router.post("/login", async (req, res) => {
         if (!user) return res.status(404).json("user not found");
         const isPasswordCorrect = await bcrypt.compare(password, user.password);
         console.log("isPasswordCorrect", isPasswordCorrect);
-        if (!isPasswordCorrect) return res.status(400).json("incorrect email or password");
+        if (!isPasswordCorrect) return res.status(400).json({ message: "incorrect email or password" });
 
         console.log(user._id, "ispassword correct");
 
         const token = jwt.sign({ id: user._id }, process.env.SECRETKEY, { expiresIn: "48h" });
         user.password = undefined;
-        res.status(200).cookie("token", token, { httpOnly: true }).json({ success: true, token, user });
+        //res.status(200).cookie("token", token, { httpOnly: true }).json({ success: true, token, user });
+        res.status(200)
+            .cookie("token", token, { httpOnly: true, sameSite: "none", secure: true })
+            .json({ success: true, token, user });
+
         console.log(res.cookie, "cookieesss");
     } catch (error) {
         res.status(500).json(error);
