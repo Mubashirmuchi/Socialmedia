@@ -37,7 +37,7 @@ const index = () => {
                         <p className="">
                             <strong>Posts</strong>
                         </p>
-                        <p>12</p>
+                        <p>{data.length}</p>
                     </div>
                     <div className="posts flex flex-col items-center mr-2">
                         <p className="">
