@@ -11,10 +11,10 @@ export const login = createAsyncThunk("user/login", async (params, { rejectWithV
             localStorage.setItem("user", JSON.stringify(response.data));
             return response.data;
         } else {
-            return rejectWithValue(response?.status === 500 && "Something went wrong");
+            return rejectWithValue(response?.response?.status === 500 ? "Something went wrong" : response?.response?.data);
         }
     } catch (err) {
-        return rejectWithValue("Something went wrong");
+        return rejectWithValue(err.message || "Something went wrong");
     }
 });
 
@@ -70,9 +70,9 @@ const userSlice = createSlice({
                 console.log("ch error", action.error);
                 if (action.error.message === "Request failed with status code 404") {
                     state.error = "Access denied invalid Credentials";
-                    state.error = action.error;
+                    state.error = null;
                 } else {
-                    state.error = action.error.message;
+                    state.error = null;
                 }
             });
 
@@ -83,11 +83,11 @@ const userSlice = createSlice({
         builder.addCase(login.fulfilled, (state, action) => {
             state.user = action.payload;
             state.isAuthenticated = true;
-            state.error = "";
             state.loading = false;
         });
         builder.addCase(login.rejected, (state, action) => {
-            state.error = action?.payload;
+            console.log("lgin rej", action.payload);
+            state.error = action.payload;
             state.loading = false;
         });
         // builder.addCase(logout.fulfilled, (state) => {
