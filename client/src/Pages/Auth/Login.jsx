@@ -3,7 +3,7 @@ import Oauth from "./Oauth";
 import AuthService from "../../Service/authservice";
 import { useState } from "react";
 import { login } from "../../Store/UserSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
     const [input, setInput] = useState({
@@ -12,6 +12,7 @@ const Login = () => {
     });
     const dispatch = useDispatch();
 
+    const { error, loading } = useSelector((state) => state.user);
     const handleChange = (e) => {
         const { value, name } = e.target;
         setInput((prev) => ({ ...prev, [name]: value }));
@@ -52,6 +53,12 @@ const Login = () => {
                     Login
                 </button>
             </div>
+
+            {error && (
+                <div className="p-1  w-fit mx-4 my-3 text-sm text-red-700 bg-red-200 rounded-lg" role="alert">
+                    <span className="font-medium">{error}</span>
+                </div>
+            )}
 
             <hr className="mt-10 h-full w-full opacity-50" />
             <div className="px-4 pb-2 pt-4">
