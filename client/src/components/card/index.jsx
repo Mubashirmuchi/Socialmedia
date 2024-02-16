@@ -1,44 +1,33 @@
 import React from "react";
-import CardHeader from "../cardheader/CardHeader";
 
 const index = () => {
     return (
         <>
-            <div className="bg-white shadow rounded-lg pb-4">
+            <div className="bg-white shadow rounded-lg my-6 pb-4">
                 <div className="flex flex-row px-2 py-3 mx-3">
-                    <div className="w-auto h-auto rounded-full border-2 border-green-500">
+                    <div className="w-auto h-auto rounded-full">
                         <img
                             className="w-12 h-12 object-cover rounded-full shadow cursor-pointer"
                             alt="User avatar"
-                            src="https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=200&amp;q=200"
+                            src="https://lh3.googleusercontent.com/a/ACg8ocKweFarsxbUoBIoFDSPPbDLqmtMEDE2INHwKsKE1wv15g=s96-c"
                         />
                     </div>
                     <div className="flex flex-col mb-2 ml-4 mt-1">
-                        <div className="inline-flex text-gray-600 text-sm font-semibold">
-                            <span className="flex-1 flex-shrink-0">Sara_Lauren</span>
-                            <span className="mx-1 flex-1 flex-shrink-0">
-                                <svg
-                                    viewBox="0 0 24 24"
-                                    style={{ width: " 20px", color: "blue" }}
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <g data-name="21. Verified" id="_21._Verified">
-                                        <path d="M22.51,13.76a3,3,0,0,1,0-3.52l.76-1.05a1,1,0,0,0,.14-.9,1.018,1.018,0,0,0-.64-.64l-1.23-.4A2.987,2.987,0,0,1,19.47,4.4V3.1a1,1,0,0,0-1.31-.95l-1.24.4a3,3,0,0,1-3.35-1.09L12.81.41a1.036,1.036,0,0,0-1.62,0l-.76,1.05A3,3,0,0,1,7.08,2.55l-1.24-.4a1,1,0,0,0-1.31.95V4.4A2.987,2.987,0,0,1,2.46,7.25l-1.23.4a1.018,1.018,0,0,0-.64.64,1,1,0,0,0,.14.9l.76,1.05a3,3,0,0,1,0,3.52L.73,14.81a1,1,0,0,0-.14.9,1.018,1.018,0,0,0,.64.64l1.23.4A2.987,2.987,0,0,1,4.53,19.6v1.3a1,1,0,0,0,1.31.95l1.23-.4a2.994,2.994,0,0,1,3.36,1.09l.76,1.05a1.005,1.005,0,0,0,1.62,0l.76-1.05a3,3,0,0,1,3.36-1.09l1.23.4a1,1,0,0,0,1.31-.95V19.6a2.987,2.987,0,0,1,2.07-2.85l1.23-.4a1.018,1.018,0,0,0,.64-.64,1,1,0,0,0-.14-.9Zm-5.8-3.053-5,5a1,1,0,0,1-1.414,0l-3-3a1,1,0,1,1,1.414-1.414L11,13.586l4.293-4.293a1,1,0,0,1,1.414,1.414Z"></path>
-                                    </g>
-                                </svg>
-                            </span>
-                        </div>
+                        <div className="text-gray-600 text-sm font-semibold">Name</div>
                         <div className="flex w-full mt-1">
-                            <div className="text-blue-700 font-base text-xs mr-1 cursor-pointer">UX Design</div>
-                            <div className="text-gray-400 font-thin text-xs">• 1 day ago</div>
+                            <div className="text-blue-700 font-base text-xs mr-1 cursor-pointer">SEO</div>
+                            <div className="text-gray-400 font-thin text-xs">• 30 seconds ago</div>
                         </div>
                     </div>
                 </div>
                 <div className="border-b border-gray-100 p-4"></div>
                 <div className="text-gray-400 font-medium text-sm mb-7 mt-6 mx-3 px-2">
-                    <img className="rounded w-full" src="https://picsum.photos/536/354" />
+                    <img
+                        className="rounded w-full"
+                        src="https://lh3.googleusercontent.com/a/ACg8ocKweFarsxbUoBIoFDSPPbDLqmtMEDE2INHwKsKE1wv15g=s96-c"
+                    />
                 </div>
-                <div className="text-gray-600 font-semibold  mb-2 mx-3 px-2">Love and gratitude</div>
+                <div className="text-gray-600 font-semibold  mb-2 mx-3 px-2">Caption</div>
                 <div className="text-gray-500 text-sm mb-6 mx-3 px-2">
                     Love and gratitude to both The Prime Minister, The Honorable Mia Amor Mottley and our President, Her
                     Excellency The Most Honorable Dame Sandra Mason for trusting me with this honor!
@@ -61,26 +50,29 @@ const index = () => {
                                 ></path>
                             </svg>
                         </span>
-                        <img
-                            className="inline-block object-cover w-8 h-8 text-white border-2 border-white rounded-full shadow-sm cursor-pointer"
-                            src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-                            alt=""
-                        />
-                        <img
-                            className="inline-block object-cover w-8 h-8 -ml-2 text-white border-2 border-white rounded-full shadow-sm cursor-pointer"
-                            src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-                            alt=""
-                        />
-                        <img
-                            className="inline-block object-cover w-8 h-8 -ml-2 text-white border-2 border-white rounded-full shadow-sm cursor-pointer"
-                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80"
-                            alt=""
-                        />
-                        <img
-                            className="inline-block object-cover w-8 h-8 -ml-2 text-white border-2 border-white rounded-full shadow-sm cursor-pointer"
-                            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2.25&amp;w=256&amp;h=256&amp;q=80"
-                            alt=""
-                        />
+                        <>
+                            {" "}
+                            <img
+                                className="inline-block object-cover w-8 h-8 text-white border-2 border-white rounded-full shadow-sm cursor-pointer"
+                                src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
+                                alt=""
+                            />
+                            <img
+                                className="inline-block object-cover w-8 h-8 -ml-2 text-white border-2 border-white rounded-full shadow-sm cursor-pointer"
+                                src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
+                                alt=""
+                            />
+                            <img
+                                className="inline-block object-cover w-8 h-8 -ml-2 text-white border-2 border-white rounded-full shadow-sm cursor-pointer"
+                                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80"
+                                alt=""
+                            />
+                            <img
+                                className="inline-block object-cover w-8 h-8 -ml-2 text-white border-2 border-white rounded-full shadow-sm cursor-pointer"
+                                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2.25&amp;w=256&amp;h=256&amp;q=80"
+                                alt=""
+                            />
+                        </>
                     </div>
                     <div className="flex justify-end w-full mt-1 pt-2 pr-5">
                         <span className="transition ease-out duration-300 hover:bg-blue-50 bg-blue-100 w-8 h-8 px-2 py-2 text-center rounded-full text-blue-400 cursor-pointer mr-2">

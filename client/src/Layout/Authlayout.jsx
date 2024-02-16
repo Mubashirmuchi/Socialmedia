@@ -1,7 +1,13 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Navigate, Outlet } from "react-router-dom";
 
 const Authlayout = () => {
+    const { isAuthenticated, user } = useSelector((store) => store.user);
+
+    if (isAuthenticated && user?.token) {
+        return <Navigate to={`/`} />;
+    }
     return (
         <>
             <section className="min-h-screen flex items-stretch text-white ">

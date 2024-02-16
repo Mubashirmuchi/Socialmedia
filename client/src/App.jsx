@@ -1,13 +1,17 @@
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
-import Userlayout from "./Layout/userlayout";
-import Homepage from "./pages/user/Homepage/Homepage";
-import Message from "./pages/user/message/Message";
-import Friends from "./pages/user/friends/Friends";
-import Explore from "./pages/user/explore/Explore";
-import Profile from "./pages/user/profile/Profile";
-import Login from "./pages/auth/login/Login";
-import Signup from "./pages/auth/signup/Signup";
-import Authlayout from "./Layout/authlayout";
+import { Provider, useDispatch } from "react-redux";
+import store from "./Store";
+import Userlayout from "./Layout/UserLayout";
+import Authlayout from "./Layout/AuthLayout";
+import Homepage from "./Pages/User/Homepage";
+import Message from "./Pages/User/Message";
+import Friends from "./Pages/User/Friends";
+import Explore from "./Pages/User/Explore";
+import Profile from "./Pages/User/Profile";
+import Login from "./Pages/Auth/Login";
+import Signup from "./Pages/Auth/Signup";
+import { useEffect } from "react";
+import { checkAuthorization } from "./Store/UserSlice";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -29,6 +33,10 @@ const router = createBrowserRouter(
 );
 
 function App() {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(checkAuthorization());
+    }, []);
     return <RouterProvider router={router}></RouterProvider>;
 }
 

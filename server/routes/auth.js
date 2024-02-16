@@ -40,7 +40,10 @@ router.post("/login", async (req, res) => {
 
     try {
         const user = await User.findOne({ email: email });
-        if (!user) return res.status(404).json("user not found");
+        if (!user) {
+            return res.status(200).json("user not found");
+        }
+
         const isPasswordCorrect = await bcrypt.compare(password, user.password);
         console.log("isPasswordCorrect", isPasswordCorrect);
         if (!isPasswordCorrect) return res.status(400).json({ message: "incorrect email or password" });
@@ -57,6 +60,44 @@ router.post("/login", async (req, res) => {
         console.log(res.cookie, "cookieesss");
     } catch (error) {
         res.status(500).json(error);
+    }
+});
+
+// router.post("/oauth", async (req, res) => {
+//     const { email, photo, name } = req.body;
+//     try {
+//         console.log(email);
+//         // const user = await User.findOne({ email:email });
+//         const user = {email}
+//         if (user) return res.status(404).json("user not found");
+
+//         const token = jwt.sign({ id: user._id }, process.env.SECRETKEY, { expiresIn: "48h" });
+//         // user.password = undefined;
+//         //res.status(200).cookie("token", token, { httpOnly: true }).json({ success: true, token, user });
+//         res.status(200)
+//             .cookie("token", token, { httpOnly: true, sameSite: "none", secure: true })
+//             .json({ success: true, token, user });
+
+//         console.log(res.cookie, "cookieesss");
+//     } catch (error) {
+//         console.log("Oauth erroor");
+//     }
+// });
+router.post("/oauth", async (req, res) => {
+    const { email, photo, name } = req.body;
+    try {
+        const user = new User({
+            username: name,
+            email: email,
+            fullname: name,
+            profilePicture: photo,
+            password: "12345",
+        });
+        const resp = await user.save();
+        console.log("rressp", resp);
+        res.status(200).json({ message: "Success", data: resp });
+    } catch (error) {
+        console.log("Oauth erroor");
     }
 });
 
