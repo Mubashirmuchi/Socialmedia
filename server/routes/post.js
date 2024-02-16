@@ -116,4 +116,9 @@ postrouter.get("/timeline/:userId", async (req, res) => {
     }
 });
 
+postrouter.get("/ss", async (req, res) => {
+    const dd = await Post.find();
+    console.log(dd);
+});
+
 export default postrouter;

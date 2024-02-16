@@ -1,12 +1,11 @@
 import mongoose from "mongoose";
-import { type } from "os";
 
 const userschema = new mongoose.Schema(
     {
         username: {
             type: String,
             required: true,
-            unique: true,
+            // unique: true,
         },
         fullname: {
             type: String,
@@ -22,7 +21,7 @@ const userschema = new mongoose.Schema(
         },
         profilePicture: {
             type: String,
-            default: "",
+            default: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIf4R5qPKHPNMyAqV-FjS_OTBB8pfUV29Phg&usqp=CAU",
         },
         coverPicture: {
             type: String,
