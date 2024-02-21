@@ -15,9 +15,10 @@ const AuthService = {
 
     register: async (params = {}) => {
         try {
-            const res = await service.post(API.SIGNUP, params);
-            if (res?.data) {
-                return res.data;
+            const res = await service.post(API.REGISTER, params);
+            console.log("reg", res);
+            if (res) {
+                return res;
             } else {
                 throw new Error("something went wrong");
             }

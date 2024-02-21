@@ -109,6 +109,7 @@ postrouter.get("/timeline/:userId", async (req, res) => {
             return Post.find({ userId: friendid });
         })
     );
+    console.log("userpost", userpost);
     res.status(200).json(userpost.concat(...friendspost));
     try {
     } catch (error) {
@@ -116,9 +117,9 @@ postrouter.get("/timeline/:userId", async (req, res) => {
     }
 });
 
-postrouter.get("/ss", async (req, res) => {
-    const dd = await Post.find();
-    console.log(dd);
+postrouter.get("/test/test", async (req, res) => {
+    const allimages = await Post.find({}).select("url");
+    res.status(200).json({ allimages });
 });
 
 export default postrouter;
