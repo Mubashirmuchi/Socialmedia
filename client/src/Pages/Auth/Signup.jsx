@@ -1,11 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { SignUp } from "../../Store/UserSlice";
 
 const Signup = () => {
+    const [input, setInput] = useState({
+        email: "",
+        password: "",
+        username: "",
+        fullname: "",
+    });
+    const dispatch = useDispatch();
+    console.log("iinpiut", input);
+
+    const { error, loading } = useSelector((state) => state.user);
+    const handleChange = (e) => {
+        const { value, name } = e.target;
+        setInput((prev) => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = () => {
+        dispatch(SignUp(input)).then((res) => console.log("response in signup page", res.payload));
+    };
+
     return (
         <div className="sm:w-2/3 w-full px-4 lg:px-0 mx-auto">
             <div className="pb-2 pt-4 rounded-md">
                 <input
+                    onChange={handleChange}
                     type="email"
                     name="email"
                     id="email"
@@ -15,6 +37,7 @@ const Signup = () => {
             </div>
             <div className="pb-2 pt-4">
                 <input
+                    onChange={handleChange}
                     className="block w-full p-4 text-lg rounded-sm bg-black"
                     type="text"
                     name="username"
@@ -24,6 +47,7 @@ const Signup = () => {
             </div>
             <div className="pb-2 pt-4">
                 <input
+                    onChange={handleChange}
                     className="block w-full p-4 text-lg rounded-sm bg-black"
                     type="text"
                     name="fullname"
@@ -33,6 +57,7 @@ const Signup = () => {
             </div>
             <div className="pb-2 pt-4">
                 <input
+                    onChange={handleChange}
                     className="block w-full p-4 text-lg rounded-sm bg-black"
                     type="password"
                     name="password"
@@ -42,7 +67,10 @@ const Signup = () => {
             </div>
 
             <div className="px-4 pb-2 pt-4">
-                <button className="uppercase block w-full p-4 text-lg rounded-full bg-indigo-500 hover:bg-indigo-600 focus:outline-none">
+                <button
+                    onClick={handleSubmit}
+                    className="uppercase block w-full p-4 text-lg rounded-full bg-indigo-500 hover:bg-indigo-600 focus:outline-none"
+                >
                     Signup
                 </button>
             </div>

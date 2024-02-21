@@ -1,8 +1,8 @@
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 import { Provider, useDispatch } from "react-redux";
-import store from "./Store";
-import Userlayout from "./Layout/UserLayout";
-import Authlayout from "./Layout/AuthLayout";
+import store from "c:/Users/muham/OneDrive/Desktop/Socialmedia/client/src/store/index";
+import Userlayout from "c:/Users/muham/OneDrive/Desktop/Socialmedia/client/src/Layout/userlayout";
+import Authlayout from "c:/Users/muham/OneDrive/Desktop/Socialmedia/client/src/Layout/Authlayout";
 import Homepage from "./Pages/User/Homepage";
 import Message from "./Pages/User/Message";
 import Friends from "./Pages/User/Friends";
@@ -37,7 +37,11 @@ function App() {
     useEffect(() => {
         dispatch(checkAuthorization());
     }, []);
-    return <RouterProvider router={router}></RouterProvider>;
+    return (
+        <>
+            <RouterProvider router={router}></RouterProvider>
+        </>
+    );
 }
 
 export default App;

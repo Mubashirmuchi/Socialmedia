@@ -1,48 +1,115 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const index = () => {
-    return (
-        <div>
-            <div
-                className=" bg-white shadow rounded-lg p-4 w-[calc(100vw-21rem)]    m-1 
-"
-            >
-                <div className="bg-white flex flex-col w-full sticky top-0">
-                    <h1 className="text-gray-600 text-xl font-semibold"> Explore</h1>
-                    <div className="border-b border-gray-100 p-4"></div>
-                </div>
+    const [loading, setLoading] = useState(false);
+    const [data, setData] = useState([]);
 
-                <div className="grids flex flex-wrap border-solid border-red-100 ">
-                    <div className="maxwidth w-[32%] m-1">
-                        <img className="w-full" src="https://picsum.photos/536/354" />
-                    </div>{" "}
-                    <div className="maxwidth w-[32%] m-1">
-                        <img className="w-full" src="https://picsum.photos/536/354" />
-                    </div>{" "}
-                    <div className="maxwidth  w-[32%] m-1">
-                        <img className="w-full" src="https://picsum.photos/536/354" />
-                    </div>{" "}
-                    <div className="maxwidth  w-[32%] m-1">
-                        <img className="w-full" src="https://picsum.photos/536/354" />
-                    </div>{" "}
-                    <div className="maxwidth  w-[32%] m-1">
-                        <img className="w-full" src="https://picsum.photos/536/354" />
-                    </div>{" "}
-                    <div className="maxwidth w-[32%] m-1">
-                        <img className="w-full" src="https://picsum.photos/536/354" />
-                    </div>{" "}
-                    <div className="maxwidth w-[32%] m-1">
-                        <img className="w-full" src="https://picsum.photos/536/354" />
-                    </div>{" "}
-                    <div className="maxwidth  w-[32%] m-1">
-                        <img className="w-full" src="https://picsum.photos/536/354" />
-                    </div>{" "}
-                    <div className="maxwidth  w-[32%] m-1">
-                        <img className="w-full" src="https://picsum.photos/536/354" />
-                    </div>{" "}
-                    <div className="maxwidth  w-[32%] m-1">
-                        <img className="w-full" src="https://picsum.photos/536/354" />
-                    </div>
+    const arr = [
+        { img: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" },
+        { img: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" },
+        { img: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" },
+        { img: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg" },
+        { img: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg" },
+        { img: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg" },
+        { img: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg" },
+        { img: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg" },
+        { img: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg" },
+        { img: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg" },
+        { img: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg" },
+    ];
+
+    return (
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="grid gap-4">
+                <div>
+                    <img
+                        class="h-auto max-w-full rounded-lg"
+                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg"
+                        alt=""
+                    />
+                </div>
+                <div>
+                    <img
+                        class="h-auto max-w-full rounded-lg"
+                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg"
+                        alt=""
+                    />
+                </div>
+                <div>
+                    <img
+                        class="h-auto max-w-full rounded-lg"
+                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg"
+                        alt=""
+                    />
+                </div>
+            </div>
+            <div class="grid gap-4">
+                <div>
+                    <img
+                        class="h-auto max-w-full rounded-lg"
+                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg"
+                        alt=""
+                    />
+                </div>
+                <div>
+                    <img
+                        class="h-auto max-w-full rounded-lg"
+                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg"
+                        alt=""
+                    />
+                </div>
+                <div>
+                    <img
+                        class="h-auto max-w-full rounded-lg"
+                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg"
+                        alt=""
+                    />
+                </div>
+            </div>
+            <div class="grid gap-4">
+                <div>
+                    <img
+                        class="h-auto max-w-full rounded-lg"
+                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg"
+                        alt=""
+                    />
+                </div>
+                <div>
+                    <img
+                        class="h-auto max-w-full rounded-lg"
+                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg"
+                        alt=""
+                    />
+                </div>
+                <div>
+                    <img
+                        class="h-auto max-w-full rounded-lg"
+                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg"
+                        alt=""
+                    />
+                </div>
+            </div>
+            <div class="grid gap-4">
+                <div>
+                    <img
+                        class="h-auto max-w-full rounded-lg"
+                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg"
+                        alt=""
+                    />
+                </div>
+                <div>
+                    <img
+                        class="h-auto max-w-full rounded-lg"
+                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg"
+                        alt=""
+                    />
+                </div>
+                <div>
+                    <img
+                        class="h-auto max-w-full rounded-lg"
+                        src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg"
+                        alt=""
+                    />
                 </div>
             </div>
         </div>

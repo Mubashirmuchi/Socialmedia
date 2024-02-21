@@ -4,11 +4,11 @@ const index = () => {
     return (
         <div
             role="status"
-            class="space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center"
+            className="space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center"
         >
-            <div class="flex items-center justify-center w-full h-48 bg-gray-300 rounded sm:w-96 dark:bg-gray-300">
+            <div className="flex items-center justify-center w-full h-48 bg-gray-300 rounded sm:w-96 dark:bg-gray-300">
                 <svg
-                    class="w-10 h-10 text-gray-200 dark:text-gray-200"
+                    className="w-10 h-10 text-gray-200 dark:text-gray-200"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
@@ -18,7 +18,7 @@ const index = () => {
                 </svg>
             </div>
 
-            <span class="sr-only">Loading...</span>
+            <span className="sr-only">Loading...</span>
         </div>
     );
 };
