@@ -1,6 +1,6 @@
 import React from "react";
 
-const index = () => {
+const index = ({ url }) => {
     return (
         <>
             <div className="bg-white shadow rounded-lg my-6 pb-4">
@@ -16,16 +16,13 @@ const index = () => {
                         <div className="text-gray-600 text-sm font-semibold">Name</div>
                         <div className="flex w-full mt-1">
                             <div className="text-blue-700 font-base text-xs mr-1 cursor-pointer">SEO</div>
-                            <div className="text-gray-400 font-thin text-xs">• 30 seconds ago</div>
+                            <div className="text-gray-400 font-thin text-xs">• 9 seconds ago</div>
                         </div>
                     </div>
                 </div>
                 <div className="border-b border-gray-100 p-4"></div>
                 <div className="text-gray-400 font-medium text-sm mb-7 mt-6 mx-3 px-2">
-                    <img
-                        className="rounded w-full"
-                        src="https://lh3.googleusercontent.com/a/ACg8ocKweFarsxbUoBIoFDSPPbDLqmtMEDE2INHwKsKE1wv15g=s96-c"
-                    />
+                    <img className="rounded w-full max-h-[700px]" src={url} />
                 </div>
                 <div className="text-gray-600 font-semibold  mb-2 mx-3 px-2">Caption</div>
                 <div className="text-gray-500 text-sm mb-6 mx-3 px-2">

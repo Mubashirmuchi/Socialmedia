@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 const SUCCESS_CODES = [200, 201, 301, 204];
 import AuthService from "../Service/authservice";
+import { toast } from "react-toastify";
 
 export const login = createAsyncThunk("user/login", async (params, { rejectWithValue, dispatch }) => {
     try {
@@ -9,10 +10,37 @@ export const login = createAsyncThunk("user/login", async (params, { rejectWithV
         if (SUCCESS_CODES.includes(response.status) && response?.data) {
             localStorage.setItem("access_token", response.data?.token);
             localStorage.setItem("user", JSON.stringify(response.data));
+            toast.success("Login successfull");
             return response.data;
         } else {
             return rejectWithValue(response?.response?.status === 500 ? "Something went wrong" : response?.response?.data);
         }
+    } catch (err) {
+        return rejectWithValue(err.message || "Something went wrong");
+    }
+});
+
+export const SignUp = createAsyncThunk("user/signup", async (params, { rejectWithValue, dispatch }) => {
+    try {
+        const response = await AuthService.register(params);
+        console.log("response signup slce", response);
+        if (SUCCESS_CODES.includes(response.status) && response?.data) {
+            return response.data.message;
+        } else {
+            return rejectWithValue(
+                response?.response?.status === 500 ? "Something went wrong" : response?.response?.data.message
+            );
+        }
+    } catch (err) {
+        return rejectWithValue(err.message || "Something went wrong");
+    }
+});
+
+export const logout = createAsyncThunk("user/logout", async (_, { rejectWithValue, dispatch }) => {
+    try {
+        localStorage.removeItem("access_token");
+        localStorage.removeItem("user");
+        return true;
     } catch (err) {
         return rejectWithValue(err.message || "Something went wrong");
     }
@@ -86,18 +114,18 @@ const userSlice = createSlice({
             state.loading = false;
         });
         builder.addCase(login.rejected, (state, action) => {
-            console.log("lgin rej", action.payload);
+            console.log("login rej", action.payload);
             state.error = action.payload;
             state.loading = false;
         });
-        // builder.addCase(logout.fulfilled, (state) => {
-        //     state.isAuthenticated = false;
-        //     state.user = {};
-        //     state.profile = {};
-        // });
-        // builder.addCase(logout.rejected, (state) => {
-        //     state.error = "something went wrong";
-        // });
+        builder.addCase(logout.fulfilled, (state) => {
+            state.isAuthenticated = false;
+            state.user = {};
+            state.profile = {};
+        });
+        builder.addCase(logout.rejected, (state) => {
+            state.error = "something went wrong";
+        });
     },
 });
 

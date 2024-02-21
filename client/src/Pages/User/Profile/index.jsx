@@ -12,12 +12,14 @@ const index = () => {
         getImages();
     }, []);
 
-    console.log(
-        "data",
-        data.map((item) => item.url)
-    );
+    // console.log(
+    //     "data",
+    //     data.map((item) => item.url)
+    // );
 
-    console.log(data.length, "length");
+    // console.log(data.length, "length");
+
+    console.log("uuusssere", user);
     const arr = [1, 2, 3, 4, 5, 6];
 
     return (
@@ -77,14 +79,25 @@ const index = () => {
                             ))}
                         </>
                     )}
-                    {data &&
+                    {/* {data &&
                         data.map((item) => {
                             return (
                                 <div key={item.id} className={`fade-in ${!loading ? "visible" : ""}`}>
                                     <img className="w-full h-48 object-cover " src={item.url} alt={item.id} />
                                 </div>
                             );
-                        })}
+                        })} */}
+
+                    {data &&
+                        data
+                            .sort((a, b) => b.id - a.id) // Sort the data array in descending order based on the 'id' property
+                            .map((item) => {
+                                return (
+                                    <div key={item.id} className={`fade-in ${!loading ? "visible" : ""}`}>
+                                        <img className="w-full h-48 object-cover" src={item.url} alt={item.id} />
+                                    </div>
+                                );
+                            })}
                 </div>
             </div>
         </div>

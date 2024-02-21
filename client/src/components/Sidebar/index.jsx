@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-const Sidebar = () => {
+const Sidebar = ({ setPost, setOpen }) => {
     return (
         <>
             <div className="z-20 hidden w-80 overflow--auto pt-24 md:block flex-shrink-0">
@@ -86,7 +86,12 @@ const Sidebar = () => {
                 </div>
 
                 <div className=" my-2 pl-7 p-2 flex">
-                    <button className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
+                    <button
+                        onClick={() => {
+                            setPost(true);
+                        }}
+                        className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6"
+                    >
                         <span className="inline-flex justify-center items-center ml-4">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clipPath="url(#clip0_52_2)">
@@ -154,7 +159,12 @@ const Sidebar = () => {
                 </div>
 
                 <div className=" my-2 pl-7 p-2 flex">
-                    <button className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
+                    <button
+                        onClick={() => {
+                            setOpen(true);
+                        }}
+                        className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6"
+                    >
                         <span className="inline-flex justify-center items-center ml-4">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path

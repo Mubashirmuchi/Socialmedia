@@ -1,16 +1,16 @@
 export const API = {
-    LOGIN: "/api/auth/login",
-    REGISTER: "/api/auth/register",
-    CHANGEPASSWORD: "/api/users/:id",
-    DELETEACCOUNT: "/api/users/:id",
-    GETAUSER: "/api/users/:id",
-    FOLLOW: "/api/users/:id/follow",
-    UNFOLLOW: "/api/users/:ID/unfollow",
-    CREATEPOST: "/api/post",
-    UPDATEPOST: "/api/post/:id",
-    DELETEPOST: "/api/post/:id",
-    LIKEPOST: "/api/post/:id/like",
-    GETPOST: "/api/post/:id",
-    TIMELINEPOST: "/api/post/timeline",
-    OAUTH: "/api/auth/oauth",
+    LOGIN: "/api/auth/login", // Login
+    REGISTER: "/api/auth/register", // Create Account
+    CHANGEPASSWORD: "/api/users/:id", // Change PAssword
+    DELETEACCOUNT: "/api/users/:id", // Delete Account
+    GETAUSERPOST: "/api/users", // Get  user post
+    FOLLOW: "/api/users/:id/follow", //Follow a user
+    UNFOLLOW: "/api/users/:ID/unfollow", // unfollow a user
+    CREATEPOST: "/api/post", // crate a post
+    UPDATEPOST: "/api/post/:id", // change discription
+    DELETEPOST: "/api/post/:id", // delete a post
+    LIKEPOST: "/api/post/:id/like", // like a post
+    GETPOST: "/api/post/:id", // get a post
+    TIMELINEPOST: "/api/post/timeline", // get all post of followin user
+    OAUTH: "/api/auth/oauth", // google oauth
 };
